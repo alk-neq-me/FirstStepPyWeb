@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- py-script -->
+  <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+  <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+  <!-- tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Test</title>
+  <py-env>
+    - numpy
+    - matplotlib
+  </py-env>
+</head>
+<style type="text/css" src="./styles.css"></style>
+<body>
+  <div class="flex justify-center mt-5">
+    <div class="flex flex-col px-6 py-10 bg-gray-200 rounded-xl shadow-xl">
+      <input 
+        type="number"
+        max=5
+        min=1
+        placeholder="Choice Number"
+        class="bg-white rounded text-sm p-2 text-gray-800 w-[300px] h-10"
+        id="inp"
+      >
+      <p class="text-sm text-gray-500 mt-2" id="result"></p>
+      <button class="bg-blue-500 text-white rounded mt-2 h-10" id="btn" pys-onClick="play_game">Guess</button>
+    </div>
+  </div>
+  <div id="plot" class="mt-10"></div>
+
+</body>
+
+<py-script src="./script.py"></py-script>
+<py-script output="plot">
+  import matplotlib.pyplot as plt
+  import numpy as np
+
+
+  x = np.random.randn(1000)
+  y = np.random.randn(1000)
+
+  fig, ax = plt.subplots()
+  ax.scatter(x, y)
+
+  fig
+</py-script>
+
+</html>
